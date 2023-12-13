@@ -1,33 +1,42 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import React from 'react'
+
+// import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
+
+
 import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
 
+import { Route, Routes } from 'react-router-dom'
+import ResetPassword from './pages/auth/ResetPassword'
+import AdminSignUp from './pages/auth/AdminSignUp'
+import Dashboard from './pages/dashboard/Dashboard'
+import Books from './pages/books/Books'
+import AddBook from './pages/books/AddBook'
+import EditBook from './pages/books/EditBook'
+import History from './pages/history/History'
+import Clients from './pages/clients/Clients'
+import Login from './pages/auth/Login'
+
+function App() {
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Routes>
+        {/* We will later update this (/) route to display homepage */}
+        <Route path='/' element={<Login />} ></Route>
+        <Route path='/login' element={<Login />} ></Route>
+        <Route path='/reset-password' element={<ResetPassword />} ></Route>
+        <Route path='/admin-signup' element={<AdminSignUp />} ></Route>
+
+        <Route path='/dashboard' element={<Dashboard />} ></Route>
+        <Route path='/books' element={<Books />} ></Route>
+        <Route path='/add-book' element={<AddBook />} ></Route>
+        <Route path='/edit-book' element={<EditBook />} ></Route>
+
+        <Route path='/history' element={<History />} ></Route>
+        <Route path='/clients' element={<Clients />} ></Route>
+
+      </Routes>
     </>
   )
 }
